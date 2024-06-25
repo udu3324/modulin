@@ -67,14 +67,12 @@ void updateControl() {
   if ((soft_pot == 0)) pitch = 0; //stop mapping of zero
   if (velocity > 127) velocity = 127; //stop higher mappings
 
-  float vibrato = map((velocity / 127.0), 0.0, 1.0, 0.0, 0.25) * kVib.next();
-
   Serial.print("pitch \t");
   Serial.print(pitch);
   Serial.print("\t velocity   ");
-  Serial.println(vibrato);
+  Serial.println(velocity);
 
-  aSin.setFreq(pitch + vibrato);
+  aSin.setFreq(pitch);
 }
 
 AudioOutput updateAudio() {
